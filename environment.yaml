@@ -1,0 +1,8 @@
+name: remoteget
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - pip>=22.0
+  - python>=3.9
+  - requests>=2.28
