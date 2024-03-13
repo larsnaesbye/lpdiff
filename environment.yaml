@@ -1,4 +1,4 @@
-name: remoteget
+name: lpdiff
 channels:
   - conda-forge
   - defaults

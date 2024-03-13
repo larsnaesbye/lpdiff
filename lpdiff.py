@@ -1,14 +1,16 @@
+import sys
+
 import requests
 from datetime import datetime
 
 # --- MAIN PROGRAM  ---------------------------------
 print(
-    datetime.fromtimestamp(datetime.now().timestamp()), " Starting lpdiff " + version
+    datetime.fromtimestamp(datetime.now().timestamp()), " Starting lpdiff "
 )
-
-response = requests.get("https://api.open-notify.org/this-api-doesnt-exist")
+uri = sys.argv[1]
+response = requests.get(uri)
 print(response.json())
 
 print(
-    datetime.fromtimestamp(datetime.now().timestamp()), " Ending lpdiff " + version
+    datetime.fromtimestamp(datetime.now().timestamp()), " Ending lpdiff "
 )
