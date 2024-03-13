@@ -6,3 +6,4 @@ dependencies:
   - pip>=22.0
   - python>=3.9
   - requests>=2.28
+  - jsondiff>=2.0.0
