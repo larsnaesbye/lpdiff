@@ -1,16 +1,24 @@
+# Compare JSON output from URLS (intended for Logpoint configs)
+# Lars Næsbye Christensen, NGC 2024
+# Syntax: python lpdiff.py <bearer_token> [url1, url2...]
+
+
 import sys
 import requests
+import pprint
 import jsondiff as jd
 import json
 from jsondiff import diff
 
-urls = sys.argv[1:len(sys.argv)]
+bearer = sys.argv[1]
+headers = {"Authorization": "Bearer " + bearer}
+urls = sys.argv[2:len(sys.argv)]
 jsons = []
 for url in urls:
-    response = requests.get(url)
+    response = requests.get(url, headers=headers)
     jsons.append(response.json())
 for j in range(len(jsons)):
     for k in range(len(jsons)):
-        result = jd.diff(jsons[j], jsons[k])
+        result = jd.diff(jsons[j], jsons[k], syntax='explicit')
         if j < k:
-            print(json.dumps(result, indent=0))
+            pprint.pprint(result)
